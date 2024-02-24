@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="./css/style.css">
     <!-- ANINATION -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- EmailJS -->
+    <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+    emailjs.init({
+  publicKey: 'dcYmyVrAID0nIl6jw',
+});
+</script>
 </head>
 
 <body id="main">
@@ -129,15 +140,15 @@
         <h2 class="heading" data-aos="fade-down">Contact <span>Me</span></h2>
         <form action="#" data-aos="fade-up">
             <div class="input-box">
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Email Address">
+                <input id="fullName" type="text" placeholder="Full Name">
+                <input id="email_id" type="email" placeholder="Email Address">
             </div>
             <div class="input-box">
-                <input type="number" placeholder="Mobile Number">
-                <input type="text" placeholder="Email Subjecct">
+                <input id="mobileNumber" type="number" placeholder="Mobile Number">
+                <input id="emailSubject" type="text" placeholder="Email Subjecct">
             </div>
-            <textarea name="" id="" cols="30" rows="10" placeholder="your Message"></textarea>
-            <input type="submit" value="Send Messsage" class="btn">
+            <textarea name="" id="message" cols="30" rows="10" placeholder="your Message"></textarea>
+            <input onclick="sendMail()" type="submit" value="Send Messsage" class="btn">
         </form>
     </section>
     <!-- footer design -->
