@@ -203,11 +203,15 @@ span {
     font-size: 1.6rem;
     margin-top: 1rem;
 }
-.about-content .email{
+.about-content .contact-email, .contact-number{
     font-size: 2rem;
     margin: 2rem 0;
 }
-.about-content .email-span{
+.about-content .phone{
+    margin-top: -1rem;
+
+}
+.about-content .contact-span{
     font-weight: 600;
     color: var(--main-color);
 }
@@ -339,6 +343,9 @@ span {
 }
 
 /* contact */
+.contact{
+    position: relative;
+}
 .contact h2 {
     margin-bottom: 3rem;
 }
@@ -352,9 +359,12 @@ span {
 
 .contact form .input-box {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
+
 }
+
 
 .contact form .input-box input,
 .contact form textarea {
@@ -368,8 +378,21 @@ span {
 
 }
 
-.contact form .input-box input {
-    width: 49%;
+.contact form .input-box input,textarea {
+    width:100%;
+}
+.contact form .error-text {
+    text-align: left;
+    font-size: 1.6rem;
+    margin-left: 1rem;
+    color: #9d3025;
+    margin-top: -5px;
+    display: none;
+}
+.contact form .input-box input:focus {
+    
+    border: 2px solid #0ef;
+
 }
 
 .contact form textarea {
@@ -378,6 +401,7 @@ span {
 
 .contact form .btn {
     margin-top: 2rem;
+    text-align: center;
     cursor: pointer;
 }
 .footer{
@@ -483,3 +507,38 @@ span {
     gap: 2rem 0;
 }
 }
+
+
+
+
+
+
+
+/* HTML: > */
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);    
+    --r1: 154%;
+    --r2: 68.5%;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%; 
+    background:
+      radial-gradient(var(--r1) var(--r2) at top   ,#0000 79.5%,#0ef 80%),
+      radial-gradient(var(--r1) var(--r2) at bottom,#0ef 79.5%,#0000 80%),
+      radial-gradient(var(--r1) var(--r2) at top   ,#0000 79.5%,#0ef 80%),
+      #ccc;
+    background-size: 50.5% 220%;
+    background-position: -100% 0%,0% 0%,100% 0%;
+    background-repeat:no-repeat;
+    animation: l9 2s infinite linear;
+    display: none;
+
+  }
+  @keyframes l9 {
+      33%  {background-position:    0% 33% ,100% 33% ,200% 33% }
+      66%  {background-position: -100%  66%,0%   66% ,100% 66% }
+      100% {background-position:    0% 100%,100% 100%,200% 100%}
+  }

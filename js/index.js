@@ -58,6 +58,9 @@ window.onscroll = () => {
 
 
 // EMAIL JS
+let form = document.querySelector("form")
+let loader = document.querySelector(".loader")
+
 function sendMail() {
     let params = {
         from_name: document.getElementById('fullName').value,
@@ -66,7 +69,21 @@ function sendMail() {
         emailSubject: document.getElementById('emailSubject').value,
         message: document.getElementById('message').value
     }
-    emailjs.send("service_l2nqzaj", "template_do2d9j2", params).then(function(res){
-        alert("Email sent successfully!")
+    emailjs.send("service_l2nqzaj", "template_do2d9j2", params).then((result)=>{
+        if (result.text != "OK"){
+        }
+        if (result.text == "OK"){
+            loader.style.display = "none";
+            Swal.fire("message sent")
+            console.log(result.text)
+            
+        }
     })
 }
+
+form.addEventListener("submit",(e)=>{
+    loader.style.display = "block"
+    e.preventDefault();
+    e.target.reset()
+    sendMail()
+})
