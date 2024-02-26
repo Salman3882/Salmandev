@@ -57,7 +57,7 @@ window.onscroll = () => {
 
 
 
-// EMAIL JS
+// Linking Email
 let form = document.querySelector("form")
 let loader = document.querySelector(".loader")
 

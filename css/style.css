@@ -281,11 +281,14 @@ span {
 }
 
 .portfolio-box {
+    width: 33.3%;
+    height:200px;
     position: relative;
     border-radius: 2rem;
     box-shadow: 0 0 1rem var(--bg-color);
     overflow: hidden;
     display: flex;
+    object-fit: cover;
 }
 
 .portfolio-box img {
@@ -389,7 +392,7 @@ span {
     margin-top: -5px;
     display: none;
 }
-.contact form .input-box input:focus {
+.contact form .input-box input:focus, textarea:focus {
     
     border: 2px solid #0ef;
 
@@ -505,6 +508,10 @@ span {
 .portfolio-container{
     flex-direction: column;
     gap: 2rem 0;
+}
+.portfolio-box{
+    width: 100%;
+    height: auto;
 }
 }
 
