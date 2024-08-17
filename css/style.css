@@ -64,7 +64,7 @@ section {
     border-bottom: .1rem solid rgba(0, 0, 0, .2);
 }
 .navbar{
-    transition: 0.5s all ease-in-out;
+    transition: 0.2s all ease-in-out;
     position: relative;
     z-index: 999;
 }
@@ -476,7 +476,6 @@ span {
         
     }
     .navbar.active{
-        transition: 0.5s ease-in-out;
         transform: translateX(0);
         /* display: block; */
     }
