@@ -69,7 +69,7 @@ function sendMail() {
         emailSubject: document.getElementById('emailSubject').value,
         message: document.getElementById('message').value
     }
-    if (!params.from_name || !params.email_id || !params.mobileNumber || !params.emailSubject || !message){
+    if (!params.from_name || !params.email_id || !params.mobileNumber || !params.emailSubject || !params.message){
         return alert("Please fill all the fields")
     }
     emailjs.send("service_l2nqzaj", "template_do2d9j2", params).then((result)=>{
