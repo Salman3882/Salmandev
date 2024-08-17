@@ -65,7 +65,8 @@ section {
 }
 .navbar{
     transition: 0.5s all ease-in-out;
-
+    position: relative;
+    z-index: 999;
 }
 
 .logo {
@@ -464,17 +465,20 @@ span {
         position: absolute;
         top: 100%;
         left: 0;
+        transform: translateX(200%);
         width: 100%;
+        z-index: -1;
         padding: 1rem 3%;
         background: var(--bg-color);
-        border-top: .1rem solif rgba(0, 0, 0, .2);
+        border-top: .1rem solid rgba(0, 0, 0, .2);
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
-        display: none;
+        /* display: none; */
         
     }
     .navbar.active{
         transition: 0.5s ease-in-out;
-        display: block;
+        transform: translateX(0);
+        /* display: block; */
     }
     .navbar a{
         display: block;
