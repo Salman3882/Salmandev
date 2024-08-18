@@ -139,6 +139,7 @@
         </div>
     </section>
     <section class="contact" id="contact">
+    
         <div class="loader"></div>
         <h2 class="heading" data-aos="fade-down">Contact <span>Me</span></h2>
         <form action="#" data-aos="fade-up">
@@ -153,11 +154,12 @@
                 <div class="input-box">
                     <input required id="mobileNumber" type="number" placeholder="Mobile Number" autocomplete="off">
                     <div class="error-text">Phone number can't be blank</div>
-                    <input required id="emailSubject" type="text" placeholder="Email Subjecct" autocomplete="off">
+                    <input required id="emailSubject" type="text" placeholder="Email Subject" autocomplete="off">
                     <div class="error-text">Email subject can't be blank</div>
                 </div>
-                <textarea required name="" id="message" cols="30" rows="10" placeholder="your Message" autocomplete="off"></textarea>
+                <textarea required name="" id="message" cols="30" rows="10" placeholder="Your message" autocomplete="off"></textarea>
                 <div class="error-text">Message can't be blank</div>
+                <h5 class="error" id="error">Please fill all the fields</h5>
             <input onclick="sendMail()"  type="submit" value="Send Messsage" class="btn">
         </form>
     </section>

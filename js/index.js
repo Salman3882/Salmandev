@@ -60,18 +60,29 @@ window.onscroll = () => {
 // Linking Email
 let form = document.querySelector("form")
 let loader = document.querySelector(".loader")
+const errorText = document.getElementById("error")
 
+window.addEventListener("click", (event) => {
+    // Check if the click was inside the form
+    if (!form.contains(event.target)) {
+        errorText.style.display = "none";
+    }
+    console.log()
+});
 function sendMail() {
     let params = {
         from_name: document.getElementById('fullName').value,
         email_id : document.getElementById('email_id').value,
         mobileNumber: document.getElementById('mobileNumber').value,
         emailSubject: document.getElementById('emailSubject').value,
-        message: document.getElementById('message').value
+        message: document.getElementById('message').value,
     }
     if (!params.from_name || !params.email_id || !params.mobileNumber || !params.emailSubject || !params.message){
-        return alert("Please fill all the fields")
+         errorText.style.display = "block"
+         return;
+        
     }
+ 
     emailjs.send("service_l2nqzaj", "template_do2d9j2", params).then((result)=>{
         if (result.text != "OK"){
         }

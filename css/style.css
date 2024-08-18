@@ -349,6 +349,12 @@ span {
     font-size: 2rem;
     color: var(--second-bg-color);
 }
+.error{
+    color: #9d3025;
+    font-size: 16px;
+    display: none;
+
+}
 
 /* contact */
 .contact{
@@ -522,6 +528,7 @@ span {
     width: 100%;
     height: auto;
 }
+
 }
 
 
