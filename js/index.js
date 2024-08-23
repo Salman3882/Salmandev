@@ -104,6 +104,22 @@ window.addEventListener("click", (event) => {
 //         }
 //     })
 // }
+
+// Swal.fire({
+//     title: 'Message sent',
+//     text: 'Your email has been sent successfully!',
+//     icon: 'success',
+//     confirmButtonText: 'Ok',
+//     background: '#f0f0f0', // Background color of the popup
+//     color: '#333', // Text color
+//     confirmButtonColor: '#3085d6', // Confirm button color
+//     timer: 5000, // Auto close after 5 seconds
+//     customClass: {
+//         popup: 'custom-swal-popup',
+//         title: 'custom-swal-title',
+//         confirmButton: 'custom-swal-confirm-button',
+//     }
+// });
 function sendMail() {
     let params = {
         from_name: document.getElementById('fullName').value,
@@ -112,7 +128,7 @@ function sendMail() {
         emailSubject: document.getElementById('emailSubject').value,
         message: document.getElementById('message').value,
     }
-    
+
     if (!params.from_name || !params.email_id || !params.mobileNumber || !params.emailSubject || !params.message) {
         errorText.style.display = "block";
         return;
@@ -124,7 +140,14 @@ function sendMail() {
         let now = new Date().getTime();
         let timeDifference = now - lastSent;
         if (timeDifference < 86400000) { // 86400000 ms = 24 hours
-            Swal.fire("You can only send one email per day.");
+            Swal.fire({
+                title: "OOPS!",
+                text: "You can only send one email per day.",
+                icon: "error",
+                color: "#f27474",
+                background: "#1f242d",
+                confirmButtonColor: "#f27474",
+            });
             return;
         }
     }
@@ -132,7 +155,14 @@ function sendMail() {
     emailjs.send("service_l2nqzaj", "template_do2d9j2", params).then((result) => {
         if (result.text == "OK") {
             loader.style.display = "none";
-            Swal.fire("Message sent");
+            Swal.fire({
+                title: "Thank you!",
+                text: "Your email has been sent successfully.",
+                icon: "success",
+                color: "#0ef",
+                background: "#1f242d",
+                confirmButtonColor: "#0ef",
+            });
             console.log(result.text);
             localStorage.setItem('lastSent', new Date().getTime()); // Store the current timestamp
         }
@@ -140,7 +170,7 @@ function sendMail() {
 }
 
 form.addEventListener("submit", (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let lastSent = localStorage.getItem('lastSent');
     let now = new Date().getTime();
     let timeDifference = now - lastSent;
@@ -148,8 +178,16 @@ form.addEventListener("submit", (e) => {
     if (!lastSent || timeDifference >= 86400000) {
         loader.style.display = "block"; // Show loader only if 24 hours have passed or it's the first submission
         sendMail();
-        e.target.reset();
     } else {
-        Swal.fire("You can only send one email per day.");
+        Swal.fire({
+            title: "OOPS!",
+            text: "You can only send one email per day.",
+            icon: "error",
+            color: "#f27474",
+            background: "#1f242d",
+            confirmButtonColor: "#f27474",
+        });
     }
+    e.target.reset(); // Clear the inputs after submit
 });
+
