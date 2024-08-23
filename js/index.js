@@ -140,8 +140,16 @@ function sendMail() {
 }
 
 form.addEventListener("submit", (e) => {
-    loader.style.display = "block";
-    e.preventDefault();
-    sendMail();
-    e.target.reset();
+    e.preventDefault()
+    let lastSent = localStorage.getItem('lastSent');
+    let now = new Date().getTime();
+    let timeDifference = now - lastSent;
+
+    if (!lastSent || timeDifference >= 86400000) {
+        loader.style.display = "block"; // Show loader only if 24 hours have passed or it's the first submission
+        sendMail();
+        e.target.reset();
+    } else {
+        Swal.fire("You can only send one email per day.");
+    }
 });
