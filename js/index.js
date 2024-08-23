@@ -82,6 +82,16 @@ function sendMail() {
          return;
         
     }
+
+    let lastSent = localStorage.getItem('lastSent');
+    if (lastSent) {
+        let now = new Date().getTime();
+        let timeDifference = now - lastSent;
+        if (timeDifference < 86400000) { // 86400000 ms = 24 hours
+            Swal.fire("You can only send one email per day.");
+            return;
+        }
+    }
  
     emailjs.send("service_l2nqzaj", "template_do2d9j2", params).then((result)=>{
         if (result.text != "OK"){
