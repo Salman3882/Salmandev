@@ -146,7 +146,7 @@ function sendMail() {
                 icon: "error",
                 color: "#f27474",
                 background: "#1f242d",
-                confirmButtonColor: "#f27474",
+                confirmButtonColor: "#000",
             });
             return;
         }
@@ -185,7 +185,7 @@ form.addEventListener("submit", (e) => {
             icon: "error",
             color: "#f27474",
             background: "#1f242d",
-            confirmButtonColor: "#f27474",
+            confirmButtonColor: "#000",
         });
     }
     e.target.reset(); // Clear the inputs after submit
