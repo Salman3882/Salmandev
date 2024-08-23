@@ -69,20 +69,56 @@ window.addEventListener("click", (event) => {
     }
     console.log()
 });
+// function sendMail() {
+//     let params = {
+//         from_name: document.getElementById('fullName').value,
+//         email_id : document.getElementById('email_id').value,
+//         mobileNumber: document.getElementById('mobileNumber').value,
+//         emailSubject: document.getElementById('emailSubject').value,
+//         message: document.getElementById('message').value,
+//     }
+//     if (!params.from_name || !params.email_id || !params.mobileNumber || !params.emailSubject || !params.message){
+//          errorText.style.display = "block"
+//          return;
+        
+//     }
+
+//     let lastSent = localStorage.getItem('lastSent');
+//     if (lastSent) {
+//         let now = new Date().getTime();
+//         let timeDifference = now - lastSent;
+//         if (timeDifference < 86400000) { // 86400000 ms = 24 hours
+//             Swal.fire("You can only send one email per day.");
+//             return;
+//         }
+//     }
+ 
+//     emailjs.send("service_l2nqzaj", "template_do2d9j2", params).then((result)=>{
+//         if (result.text != "OK"){
+//         }
+//         if (result.text == "OK"){
+//             loader.style.display = "none";
+//             Swal.fire("message sent")
+//             console.log(result.text)
+            
+//         }
+//     })
+// }
 function sendMail() {
     let params = {
         from_name: document.getElementById('fullName').value,
-        email_id : document.getElementById('email_id').value,
+        email_id: document.getElementById('email_id').value,
         mobileNumber: document.getElementById('mobileNumber').value,
         emailSubject: document.getElementById('emailSubject').value,
         message: document.getElementById('message').value,
     }
-    if (!params.from_name || !params.email_id || !params.mobileNumber || !params.emailSubject || !params.message){
-         errorText.style.display = "block"
-         return;
-        
+    
+    if (!params.from_name || !params.email_id || !params.mobileNumber || !params.emailSubject || !params.message) {
+        errorText.style.display = "block";
+        return;
     }
 
+    // Check if the user has already sent an email in the last 24 hours
     let lastSent = localStorage.getItem('lastSent');
     if (lastSent) {
         let now = new Date().getTime();
@@ -92,22 +128,20 @@ function sendMail() {
             return;
         }
     }
- 
-    emailjs.send("service_l2nqzaj", "template_do2d9j2", params).then((result)=>{
-        if (result.text != "OK"){
-        }
-        if (result.text == "OK"){
+
+    emailjs.send("service_l2nqzaj", "template_do2d9j2", params).then((result) => {
+        if (result.text == "OK") {
             loader.style.display = "none";
-            Swal.fire("message sent")
-            console.log(result.text)
-            
+            Swal.fire("Message sent");
+            console.log(result.text);
+            localStorage.setItem('lastSent', new Date().getTime()); // Store the current timestamp
         }
-    })
+    });
 }
 
-form.addEventListener("submit",(e)=>{
-    loader.style.display = "block"
+form.addEventListener("submit", (e) => {
+    loader.style.display = "block";
     e.preventDefault();
-    e.target.reset()
-    sendMail()
-})
+    sendMail();
+    e.target.reset();
+});
